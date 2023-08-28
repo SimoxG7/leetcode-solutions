@@ -1,6 +1,5 @@
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.stream.Collectors;
 
 class MyStack {
 
@@ -22,7 +21,7 @@ class MyStack {
   }
 
   public int top() {
-    return queue.poll();
+    return queue.peek();
   }
 
   public boolean empty() {
