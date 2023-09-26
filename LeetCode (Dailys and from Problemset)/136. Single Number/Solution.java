@@ -27,31 +27,3 @@ class Solution2 {
   }
 }
 
---select 
---  t.categoria, 
---  round(avg(t.probabilita), 3) as probabilita_media,
---  count(*) as tot_trans,
---  (
---    select count(*)
---    from AISSCORE.AEU_UNCLASSIFICABLE u1
---    where u1.id_transazione in (
---      select t1.id_transazione
---      from AISSCORE.AEU_TRANSACTION_MODEL_CATEGORY t1
---    )
---    and u1.cat_possibile = t.categoria
---  ) as trans_from_cestino,
---  (
---  count(*) -  
---    (select count(*)
---      from AISSCORE.AEU_UNCLASSIFICABLE u1
---      where u1.id_transazione in (
---        select t1.id_transazione
---        from AISSCORE.AEU_TRANSACTION_MODEL_CATEGORY t1
---      )
---    )
---  ) as trans_non_cestino
---from AISSCORE.AEU_TRANSACTION_MODEL_CATEGORY t
---where t.categoria is not null
---group by t.categoria
---order by t.categoria
---;
