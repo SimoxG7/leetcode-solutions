@@ -42,9 +42,21 @@ class RandomizedCollection {
     } else {
       indexes.remove(index);
     }
-    elements.set(index, elements.removeLast());
-    //still need to update index position
+    Integer lastToBeMoved = elements.removeLast();
     totSize--;
+
+    if (lastToBeMoved != val) {
+      elements.set(index, lastToBeMoved);
+      Set<Integer> toBeMovedIndexes = elementToIndexes.get(lastToBeMoved);
+      if (Objects.nonNull(toBeMovedIndexes) && !toBeMovedIndexes.isEmpty()) {
+        toBeMovedIndexes.remove(totSize);
+        toBeMovedIndexes.add(index);
+      }
+    } else {
+      indexes.remove(totSize);
+      indexes.add(index);
+    }
+
     return true;
   }
 
