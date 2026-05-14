@@ -8,7 +8,7 @@ class Solution {
       if (num >= size) return false;
       if (num == size - 1) {
         if (!occurrences[num]) occurrences[num] = true;
-        else if (occurrences[num] && !lastOccurredTwice) lastOccurredTwice = true;
+        else if (!lastOccurredTwice) lastOccurredTwice = true;
         else return false;
       } else if (occurrences[num]) {
         return false;
