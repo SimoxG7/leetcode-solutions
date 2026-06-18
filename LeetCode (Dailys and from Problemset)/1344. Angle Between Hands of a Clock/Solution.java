@@ -16,4 +16,9 @@ class Solution {
 		double diff = Math.abs(hourDegrees - minutesDegrees);
 		return Math.min(diff, DEGREES_PER_CLOCK - diff);
 	}
+
+	public double angleClock2Liner(int hour, int minutes) {
+		double diff = Math.abs(((hour % 12) * 30 + (30 / ((double) 60 / minutes))) - minutes * 6);
+		return Math.min(diff, 360 - diff);
+	}
 }
